@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <title>Imagi Sphere</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Imagi Sphere</h1>
+        <nav>
+            <a href="">Home</a>
+            <a href="#">Galleries</a>
+            <a href="#">Saved Images</a>
+            <a href="#">Style Guide</a>
+        </nav>
+    </header>
+
+    <main class="gallery">
+        <div class="gallery-item">
+            <img src="images/agustd.jfif" alt="Crown Plaza Tampa">
+        </div>
+        <div class="gallery-item">
+            <img src="images/BT21.jfif" alt="Toddlers">
+        </div>
+        <div class="gallery-item">
+            <img src="images/Cake.jpg" alt="Young and Restless">
+        </div>
+        <div class="gallery-item">
+            <img src="images/Flower.jfif" alt="Sweats for my Sweet">
+        </div>
+        <div class="gallery-item">
+            <img src="images/God.jfif" alt="Green Interiors">
+        </div>
+        <div class="gallery-item">
+            <img src="images/Cake_2.jpg" alt="Over the Horizon">
+        </div>
+        <div class="gallery-item">
+            <img src="images/song.jfif" alt="River Hills Golf Club">
+        </div>
+        <div class="gallery-item">
+            <img src="images/Hermione.jfif" alt="Childhood Adventures">
+        </div>
+        <div class="gallery-item">
+            <img src="images/jimin.jfif" alt="Natural Beauty">
+        </div>
+        <div class="gallery-item">
+            <img src="images/HP.jfif" alt="Natural Beauty">
+        </div>
+        <div class="gallery-item">
+            <img src="images/Kim Taehyung ✨.jfif" alt="Natural Beauty">
+        </div>
+        <div class="gallery-item">
+            <img src="images/Krishna.jfif" alt="Natural Beauty">
+        </div>
+        <div class="gallery-item">
+            <img src="images/love.jfif" alt="Natural Beauty">
+        </div>
+        <div class="gallery-item">
+            <img src="images/min Yoongi.jfif" alt="Natural Beauty">
+        </div>
+        <div class="gallery-item">
+            <img src="images/Princess.jfif" alt="Natural Beauty">
+        </div>
+        <div class="gallery-item">
+            <img src="images/Sky.jfif" alt="Natural Beauty">
+        </div>
+        <div class="gallery-item">
+            <img src="images/calm.jfif" alt="Natural Beauty">
+        </div>
+        <div class="gallery-item">
+            <img src="images/Sunflower.jfif" alt="Natural Beauty">
+        </div>
+        <div class="gallery-item">
+            <img src="images/Princess_2.jfif" alt="Natural Beauty">
+        </div>
+        <div class="gallery-item">
+            <img src="images/Taylor swift wallpaper.jfif" alt="Natural Beauty">
+        </div>
+        <div class="gallery-item">
+            <img src="images/tulips.jfif" alt="Natural Beauty">
+        </div>
+        <div class="gallery-item">
+            <img src="images/Princess_3.jfif" alt="Natural Beauty">
+        </div>
+        <div class="gallery-item">
+            <img src="images/Thv.jfif" alt="Natural Beauty">
+        </div>
+        <div class="gallery-item">
+            <img src="images/Tulips_2.jfif" alt="Natural Beauty">
+        </div>
+        <div class="gallery-item">
+            <img src="images/Wallpaper.jfif" alt="Natural Beauty">
+        </div>
+        <div class="gallery-item">
+            <img src="images/yoongi.jfif" alt="Natural Beauty">
+        </div>
+        <div class="gallery-item">
+            <img src="images/Wallpaper_2.jfif" alt="Natural Beauty">
+        </div>
+    </main>
+        <!-- Your existing modal structure -->
+        <div id="imageModal" class="modal">
+            <span class="close">&times;</span>
+            <img id="modalImage" class="modal-content">
+            <div class="modal-buttons">
+                <a id="downloadLink" class="download-icon" download>
+                    <i class="fas fa-download"></i>
+                </a>
+                <a id="saveLink" class="save-icon">
+                    <i class="fas fa-bookmark"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- Unsave Confirmation Box (placed outside the modal) -->
+        <div id="unsaveConfirmationBox" style="display: none;">
+            <p>Are you sure you want to unsave this image?</p>
+            <button id="confirmUnsave">Unsave</button>
+            <button id="cancelUnsave">Cancel</button>
+        </div>
+        
+
+    <footer>
+        <p>&copy; 2024 Image Gallery. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+/* Basic styling for the body */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f0f2f5;
+    color: #333;
+}
+
+/* Header styling */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background-color: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+header h1 {
+    font-size: 24px;
+    margin: 0;
+    font-family: 'Brush Script MT', cursive;
+}
+
+header nav a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: #555;
+    font-weight: bold;
+}
+
+header nav a:hover {
+    color: #ff7e6b;
+}
+
+/* Gallery styling */
+.gallery {
+    column-count: 5; /* Number of columns */
+    column-gap: 15px; /* Space between columns */
+    padding: 30px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.gallery-item {
+    background: #fff;
+    border-radius: 8px;
+    margin-bottom: 15px; /* Space between rows */
+    overflow: hidden;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    break-inside: avoid; /* Prevent break inside */
+    transition: transform 0.3s ease-in-out;
+}
+
+.gallery-item:hover {
+    transform: scale(1.05);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: auto; /* Maintain aspect ratio */
+    display: block;
+    min-height: 200px; /* Set a minimum height for images */
+}
+
+/* Footer styling */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 40px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+    .gallery {
+        column-count: 4; /* Adjust for smaller screens */
+    }
+}
+
+@media (max-width: 992px) {
+    .gallery {
+        column-count: 3; /* Further adjust for smaller screens */
+    }
+
+    header h1 {
+        font-size: 20px;
+    }
+
+    header nav a {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 768px) {
+    .gallery {
+        column-count: 2; /* Further adjust for smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .gallery {
+        column-count: 1; /* Single column on very small screens */
+    }
+}
+
+/* Modal styling */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 5; /* Lower z-index so that the confirmation box appears above */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+}
+
+/* Modal content */
+.modal-content {
+    max-width: 80%;
+    max-height: 80%;
+}
+
+/* Modal buttons styling */
+.modal-buttons {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.modal-buttons a, .modal-buttons button {
+    margin: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+/* Unsave confirmation box styling */
+#unsaveConfirmationBox {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 8px;
+    z-index: 10; /* Higher z-index than the modal */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+#unsaveConfirmationBox button {
+    margin: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+
+/* Updated Save and Download icons */
+.download-icon {
+    position: absolute;
+    bottom: 20px;
+    right: 30px; /* Adjusted to provide spacing */
+    text-decoration: none;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    padding: 10px;
+    cursor: pointer;
+    color: white;
+}
+
+.save-icon {
+    position: absolute;
+    bottom: 20px;
+    right: 90px; /* Adjusted to provide more spacing */
+    text-decoration: none;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    padding: 10px;
+    cursor: pointer;
+    color: white;
+}
+
+/* Unsave Confirmation Box Adjustments */
+#unsaveConfirmationBox {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgb(241, 177, 220);
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 8px;
+    z-index: 15; /* Higher than modal */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+
+// Get the modal and its elements
+const modal = document.getElementById("imageModal");
+const modalImg = document.getElementById("modalImage");
+const downloadLink = document.getElementById("downloadLink");
+const saveBtn = document.getElementById("saveLink");
+const closeBtn = document.querySelector(".close");
+const unsaveConfirmationBox = document.getElementById("unsaveConfirmationBox");
+const confirmUnsaveBtn = document.getElementById("confirmUnsave");
+const cancelUnsaveBtn = document.getElementById("cancelUnsave");
+
+// Get all gallery items
+const galleryItems = document.querySelectorAll(".gallery-item img");
+
+let savedImages = JSON.parse(localStorage.getItem("savedImages")) || [];
+let isSaved = false;
+
+// Function to open the modal
+galleryItems.forEach(item => {
+    item.addEventListener("click", () => {
+        modal.style.display = "flex";
+        modalImg.src = item.src;
+        downloadLink.href = item.src;
+
+        // Check if the image is saved and update the save button state
+        isSaved = savedImages.includes(item.src);
+        updateSaveButton();
+    });
+});
+
+// Function to update the save button appearance
+function updateSaveButton() {
+    if (isSaved) {
+        saveBtn.innerHTML = '<i class="fas fa-bookmark" style="color: #ff7e6b;"></i>'; // Saved style
+    } else {
+        saveBtn.innerHTML = '<i class="fas fa-bookmark"></i>'; // Default style
+    }
+}
+
+// Save or unsave the image
+saveBtn.addEventListener("click", () => {
+    if (!isSaved) {
+        // Save the image
+        savedImages.push(modalImg.src);
+        localStorage.setItem("savedImages", JSON.stringify(savedImages));
+        isSaved = true;
+        updateSaveButton();
+    } else {
+        // Show the custom unsave confirmation box
+        unsaveConfirmationBox.style.display = "block";
+    }
+});
+
+// Confirm unsave action
+confirmUnsaveBtn.addEventListener("click", () => {
+    // Unsave the image
+    savedImages = savedImages.filter(img => img !== modalImg.src);
+    localStorage.setItem("savedImages", JSON.stringify(savedImages));
+    isSaved = false;
+    updateSaveButton();
+    unsaveConfirmationBox.style.display = "none"; // Hide the confirmation box
+});
+
+// Cancel unsave action
+cancelUnsaveBtn.addEventListener("click", () => {
+    unsaveConfirmationBox.style.display = "none"; // Hide the confirmation box
+});
+
+// Close the modal
+closeBtn.onclick = function() {
+    modal.style.display = "none";
+    unsaveConfirmationBox.style.display = "none"; // Hide the confirmation box if open
+};
+
+// Close modal when clicking outside the image
+window.onclick = function(event) {
+    if (event.target === modal) {
+        modal.style.display = "none";
+        unsaveConfirmationBox.style.display = "none"; // Hide the confirmation box if open
+    }
+};
+// Update z-index for modal to ensure the unsave box appears in front
+modal.style.zIndex = "5";
+unsaveConfirmationBox.style.zIndex = "10";
+
+
+/* Basic styling for the body */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f0f2f5;
+    color: #333;
+}
+
+/* Header styling */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background-color: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+header h1 {
+    font-size: 24px;
+    margin: 0;
+    font-family: 'Brush Script MT', cursive;
+}
+
+header nav a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: #555;
+    font-weight: bold;
+}
+
+header nav a:hover {
+    color: #ff7e6b;
+}
+
+/* Gallery styling */
+.gallery {
+    column-count: 5; /* Number of columns */
+    column-gap: 15px; /* Space between columns */
+    padding: 30px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.gallery-item {
+    background: #fff;
+    border-radius: 8px;
+    margin-bottom: 15px; /* Space between rows */
+    overflow: hidden;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    break-inside: avoid; /* Prevent break inside */
+    transition: transform 0.3s ease-in-out;
+}
+
+.gallery-item:hover {
+    transform: scale(1.05);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: auto; /* Maintain aspect ratio */
+    display: block;
+    min-height: 200px; /* Set a minimum height for images */
+}
+
+/* Footer styling */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 40px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+    .gallery {
+        column-count: 4; /* Adjust for smaller screens */
+    }
+}
+
+@media (max-width: 992px) {
+    .gallery {
+        column-count: 3; /* Further adjust for smaller screens */
+    }
+
+    header h1 {
+        font-size: 20px;
+    }
+
+    header nav a {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 768px) {
+    .gallery {
+        column-count: 2; /* Further adjust for smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .gallery {
+        column-count: 1; /* Single column on very small screens */
+    }
+}
+
+/* Modal styling */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 5; /* Lower z-index so that the confirmation box appears above */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+}
+
+/* Modal content */
+.modal-content {
+    max-width: 80%;
+    max-height: 80%;
+}
+
+/* Modal buttons styling */
+.modal-buttons {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.modal-buttons a, .modal-buttons button {
+    margin: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+/* Unsave confirmation box styling */
+#unsaveConfirmationBox {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 8px;
+    z-index: 10; /* Higher z-index than the modal */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+#unsaveConfirmationBox button {
+    margin: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+
+/* Updated Save and Download icons */
+.download-icon {
+    position: absolute;
+    bottom: 20px;
+    right: 30px; /* Adjusted to provide spacing */
+    text-decoration: none;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    padding: 10px;
+    cursor: pointer;
+    color: white;
+}
+
+.save-icon {
+    position: absolute;
+    bottom: 20px;
+    right: 90px; /* Adjusted to provide more spacing */
+    text-decoration: none;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    padding: 10px;
+    cursor: pointer;
+    color: white;
+}
+
+/* Unsave Confirmation Box Adjustments */
+#unsaveConfirmationBox {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgb(241, 177, 220);
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 8px;
+    z-index: 15; /* Higher than modal */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+/* Navigation arrow styling */
+.nav-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 40px;
+    color: white;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 11; /* Above modal content */
+    user-select: none;
+}
+
+/* Left arrow position */
+#prevImage {
+    left: 20px;
+}
+
+/* Right arrow position */
+#nextImage {
+    right: 20px;
+}
+
+/* Hide arrows by default */
+.nav-arrow.hidden {
+    display: none;
+}
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.8); /* Black w/ opacity */
+}
+
+.close {
+    position: absolute; /* Position the close button */
+    top: 20px; /* Distance from top */
+    right: 30px; /* Distance from right */
+    color: white; /* Close button color */
+    font-size: 40px; /* Font size */
+    font-weight: bold; /* Font weight */
+    cursor: pointer; /* Cursor on hover */
+}
+
+
+
+
+
+// Close modal when clicking outside the image
+window.onclick = function(event) {
+    if (event.target === modal) {
+        modal.style.display = "none";
+        unsaveConfirmationBox.style.display = "none"; // Hide the confirmation box if open
+    }
+};

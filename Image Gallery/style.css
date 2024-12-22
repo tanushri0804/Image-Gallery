@@ -1,0 +1,303 @@
+/* Basic styling for the body */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f0f2f5;
+    color: #333;
+}
+
+/* Header styling */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background-color: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+header h1 {
+    font-size: 24px;
+    margin: 0;
+    font-family: 'Brush Script MT', cursive;
+}
+
+header nav a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: #555;
+    font-weight: bold;
+}
+
+header nav a:hover {
+    color: #ff7e6b;
+}
+
+/* Gallery styling */
+.gallery {
+    column-count: 5; 
+    column-gap: 15px;
+    padding: 30px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.gallery-item {
+    background: #fff;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    overflow: hidden;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    break-inside: avoid;
+    transition: transform 0.3s ease-in-out;
+}
+
+.gallery-item:hover {
+    transform: scale(1.05);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    min-height: 200px;
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+    .gallery {
+        column-count: 4;
+    }
+}
+
+@media (max-width: 992px) {
+    .gallery {
+        column-count: 3;
+    }
+
+    header h1 {
+        font-size: 20px;
+    }
+
+    header nav a {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 768px) {
+    .gallery {
+        column-count: 2;
+    }
+}
+
+@media (max-width: 480px) {
+    .gallery {
+        column-count: 1;
+    }
+}
+
+/* Screen hiding class */
+.screen.hidden {
+    display: none;
+}
+
+/* Modal styling */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 5; /* Lower z-index so that the confirmation box appears above */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;    
+}
+
+/* Modal content */
+.modal-content {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+/* Modal buttons styling */
+.modal-buttons {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.modal-buttons a, .modal-buttons button {
+    margin: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+/* Unsave confirmation box styling */
+#unsaveConfirmationBox {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    border: 1px solid #ccc;
+    padding: 20px;  
+    border-radius: 8px;
+    z-index: 10; /* Higher z-index than the modal */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+#unsaveConfirmationBox button {
+    margin: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+/* Updated Save and Download icons */
+.download-icon {
+    position: absolute;
+    bottom: 20px;
+    right: 30px; /* Adjusted to provide spacing */
+    text-decoration: none;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    padding: 10px;
+    cursor: pointer;
+    color: white;
+}
+
+.save-icon {
+    position: absolute;
+    bottom: 20px;
+    right: 90px; /* Adjusted to provide more spacing */
+    text-decoration: none;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    padding: 10px;
+    cursor: pointer;
+    color: white;
+}
+
+/* Navigation arrow styling */
+.nav-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 40px;
+    color: white;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 11; /* Above modal content */
+    user-select: none;
+}
+
+/* Left arrow position */
+#prevImage {
+    left: 20px;
+}
+
+/* Right arrow position */
+#nextImage {
+    right: 20px;
+}
+
+/* Hide arrows by default */
+.nav-arrow.hidden {
+    display: none;
+}
+
+.close {
+    position: absolute; /* Position the close button */
+    top: 70px; /* Distance from top */
+    right: 30px; /* Distance from right */
+    color: white; /* Close button color */
+    font-size: 40px; /* Font size */
+    font-weight: bold; /* Font weight */
+    cursor: pointer; /* Cursor on hover */
+}
+/* Footer styling */
+/* Footer styling */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 40px;
+}
+/* Ensure saved images section uses the same styling as gallery */
+#savedImagesContainer {
+    column-count: 5;
+    column-gap: 15px;
+    padding: 30px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+/* Upload Container */
+.upload-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px 0;
+}
+
+.upload-box {
+    width: 100%;
+    max-width: 500px;
+    height: 250px;
+    border: 2px dashed #ccc;
+    border-radius: 12px;
+    text-align: center;
+    background-color: #f9f9f9;
+    transition: border 0.3s ease-in-out;
+    position: relative;
+}
+
+.upload-box p {
+    font-size: 18px;
+    color: #555;
+    margin-top: 60px;
+}
+
+.upload-button {
+    display: inline-block;
+    background-color: #ff7e6b;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.upload-button:hover {
+    background-color: #ff5a47;
+}
+
+.upload-box.dragover {
+    border-color: #ff7e6b;
+    background-color: #fff5f3;
+}
+
+#uploadPreview {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: none;
+    max-width: 90%;
+}
+
+#uploadPreview img {
+    max-width: 100%;
+    max-height: 100px;
+    border-radius: 8px;
+    margin-top: 10px;
+}
